@@ -1,4 +1,5 @@
 /*global module:false*/
+var path = require('path');
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -79,18 +80,23 @@ module.exports = function(grunt) {
       }
     },
     express: {
-    default_option: {}
-  }
+      custom: {
+            options: {
+              port: 3000,
+              bases: 'public',
+              server: path.resolve('./app')
+            }
+          }
+    }
   });
 
-  // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-express');
-  // Default task.
+
   grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
   grunt.registerTask('dev', ['default', 'express','watch']);
 };

@@ -14,5 +14,8 @@
     "grunt-contrib-uglify": "^0.5.1",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-express": "^1.4.1"
+  },
+  "dependencies": {
+    "pug": "^2.0.0-rc.4"
   }
 }
