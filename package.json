@@ -1,4 +1,8 @@
 {
+  "name": "express-grunted",
+  "author": "pello",
+  "description": "World Zipped Web software, server and client",
+  "main": "index.js",
   "engines": {
     "node": ">= 0.10.0"
   },
@@ -8,6 +12,7 @@
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-qunit": "^0.5.2",
     "grunt-contrib-uglify": "^0.5.1",
-    "grunt-contrib-watch": "~0.6.1"
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-express": "^1.4.1"
   }
 }
