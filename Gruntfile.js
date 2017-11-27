@@ -67,7 +67,7 @@ module.exports = function(grunt) {
     },
     watch: {
       express: {
-        files: '<%= jshint.express.src %>',
+        files: ['<%= jshint.express.src %>','views/*'],
         tasks: ['jshint:gruntfile']
       },
       gruntfile: {
@@ -81,15 +81,34 @@ module.exports = function(grunt) {
     },
     express: {
       custom: {
-            options: {
+          options: {
               port: 3000,
               bases: 'public',
-              server: path.resolve('./app')
+              server: path.resolve('./app'),
+              livereload: true, // if you just specify `true`, default port `35729` will be used
+              serverreload: true
             }
           }
-    }
+      }
   });
 
+/*
+livereloadServer: {
+  server: path.resolve(__dirname, './app'),
+  bases: path.resolve(__dirname, 'public'),
+  livereload: true, // if you just specify `true`, default port `35729` will be used
+  serverreload: true
+}
+}
+custom: {
+      options: {
+        port: 3000,
+        bases: 'public',
+        server: path.resolve('./app')
+      }
+    }
+}
+*/
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-qunit');
@@ -98,5 +117,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-express');
 
   grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
-  grunt.registerTask('dev', ['default', 'express','watch']);
+  grunt.registerTask('dev', ['default', 'express', 'watch']);
 };
